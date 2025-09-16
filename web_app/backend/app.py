@@ -81,7 +81,7 @@ def predict():
                     'customer_id': customer_id,
                     'products': antecedents + consequents,
                     'confidence': float(rules.iloc[i]['confidence']),
-                    'description': f'Customers who buy {antecedents[0] if antecedents else "unknown"} are likely to also buy {consequents[0] if consequents else "unknown"} with a {rules.iloc[i]["confidence"]*100:.1f}% confidence, suggesting a cross-selling opportunity.'
+                    'description': f'Customers who buy {antecedents[0] if antecedents else "unknown"} are likely to also buy {consequents[0] if consequents else "unknown"} with a {rules.iloc[i]["confidence"]:.2%} confidence'
                 })
             except (IndexError, TypeError, ValueError) as e:
                 logger.error(f"Error at rule {i}: {str(e)}, antecedents={antecedents}, consequents={consequents}, basket row={i % len(basket)}")
